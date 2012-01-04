@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_height="match_parent"
+	android:layout_width="match_parent" android:weightSum="1">
+	<RelativeLayout android:layout_width="match_parent"
+		android:layout_height="match_parent" android:id="@+id/relativeLayout1">
+		<TextView android:layout_height="wrap_content" android:text="@+id/TextView01"
+			android:layout_width="wrap_content" android:id="@+id/adminAddDisplay"></TextView>
+		<Button android:id="@+id/adminSubmitButton"
+			android:layout_height="wrap_content" android:layout_width="wrap_content"
+			android:text="Submit" android:layout_alignBaseline="@+id/adminSkipButton"
+			android:layout_alignBottom="@+id/adminSkipButton"
+			android:layout_alignParentLeft="true" android:onClick="submitClick"></Button>
+		<EditText android:id="@+id/adminInput" android:layout_height="wrap_content"
+			android:layout_width="match_parent" android:layout_alignParentBottom="true"
+			android:layout_alignParentLeft="true" android:layout_marginBottom="65dp">
+			<requestFocus></requestFocus>
+		</EditText>
+		<Button android:id="@+id/adminSkipButton"
+			android:layout_height="wrap_content" android:layout_width="wrap_content"
+			android:text="Skip" android:layout_alignParentBottom="true"
+			android:layout_alignParentRight="true"></Button>
+		<ImageView android:id="@+id/adminAddImageView" android:layout_height="322dp" android:src="@drawable/icon" android:layout_width="match_parent" android:layout_below="@+id/adminAddDisplay" android:layout_alignParentLeft="true" android:layout_marginTop="14dp"></ImageView>
+	</RelativeLayout>
+</LinearLayout>

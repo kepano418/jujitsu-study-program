@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<RelativeLayout android:id="@+id/relativeLayout1"
+		android:layout_width="match_parent" android:layout_height="match_parent"
+		android:background="#FFFFFF">
+		<ImageView android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/imageView1"
+			android:src="@drawable/symbol" android:layout_centerVertical="true"
+			android:layout_alignParentLeft="true"></ImageView>
+		<Spinner android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:layout_alignParentTop="true"
+			android:layout_centerHorizontal="true" android:id="@+id/rankselect"></Spinner>
+		<Spinner android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/sectionselect" android:layout_alignParentBottom="true" android:layout_toLeftOf="@+id/rankselect"></Spinner>
+		<Button android:text="Button" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_alignParentBottom="true" android:layout_toRightOf="@+id/rankselect" android:layout_marginLeft="17dp" android:id="@+id/startbutton" android:onClick="onClickStartButton"></Button>
+	</RelativeLayout>
+</LinearLayout>
