@@ -80,7 +80,7 @@ public class AdminPanel extends Activity {
 					if (fileSpot == files.length) {
 						folderSpot++;
 						fileSpot = 0;
-						if(folderSpot == folders.length){
+						if(folderSpot == folders.length - 1){
 							complete = true;
 							break;
 						}
@@ -169,7 +169,7 @@ public class AdminPanel extends Activity {
 	private void putImage() {
 		ContentValues c = new ContentValues();
 		c.put(JujitsuStudyDBAdapter.COLUMN_VALUES[JujitsuStudyDBAdapter.IMAGE_TABLE][3],
-				ImageToDatabase.imgToByteArray(folder + "/" + files[fileSpot]));
+				folders[folderSpot] + "/" + files[fileSpot]);
 		c.put(JujitsuStudyDBAdapter.COLUMN_VALUES[JujitsuStudyDBAdapter.IMAGE_TABLE][2],
 				picNum);
 		c.put(JujitsuStudyDBAdapter.COLUMN_VALUES[JujitsuStudyDBAdapter.IMAGE_TABLE][1],

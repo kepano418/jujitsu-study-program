@@ -12,7 +12,7 @@ public class DataHandler extends SQLiteOpenHelper {
 	private static final String DATABASE_CREATE_CATEGORY = "CREATE TABLE category (ID integer primary key, AreaMoveIsIn text not null);";
 	private static final String DATABASE_CREATE_MOVES = "CREATE TABLE moves (ID integer primary key, Moves text not null, Category integer not null, "
 			+ "ARank integer, FOREIGN KEY(Category) REFERENCES category(ID), FOREIGN KEY(ARank) REFERENCES adultRanks(ID));";
-	private static final String DATABASE_CREATE_IMAGES = "CREATE TABLE images (PrimaryKey integer primary key autoincrement, PicID integer not null, PicNum integer not null, Picture blob," +
+	private static final String DATABASE_CREATE_IMAGES = "CREATE TABLE images (PrimaryKey integer primary key autoincrement, PicID integer not null, PicNum integer not null, Picture string not null unique," +
 			" FOREIGN KEY(PicID) REFERENCES moves(ID));";
 
 	private static final String DATABASE_QUERY_SECTIONS_BASED_ON_BELT = "CREATE VIEW sections_for_belt AS SELECT DISTINCT Belt, AreaMoveIsIn FROM category, adultRanks, moves " +

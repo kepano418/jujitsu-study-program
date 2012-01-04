@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.util.Log;
 
 import database.handler.JujitsuStudyDBAdapter;
@@ -15,7 +16,9 @@ public class Quiz {
 	private JujitsuStudyDBAdapter db;
 	private int imageNumber = 0;
 	private int questionNumber = 0;
-
+	private final String fileLoc = Environment.getExternalStorageDirectory()
+			.getAbsolutePath() + "/Jujitsu/";
+	
 	public Quiz(String rank, String category, JujitsuStudyDBAdapter db) {
 		this.db = db;
 		this.db.open();
@@ -46,9 +49,7 @@ public class Quiz {
 		if (c.getCount() > 1) {
 			c.moveToFirst();
 			while (!c.isAfterLast()) {
-				byte[] blob = c.getBlob(c.getColumnIndex("Picture"));
-				Log.e("kepano", "BLOB: " + blob.length);
-				images.add(BitmapFactory.decodeByteArray(blob, 0, blob.length));
+				images.add(BitmapFactory.decodeFile(fileLoc + c.getString(c.getColumnIndex(JujitsuStudyDBAdapter.COLUMN_VALUES[JujitsuStudyDBAdapter.IMAGE_TABLE][3]))));
 				c.moveToNext();
 			}
 		}
@@ -64,7 +65,15 @@ public class Quiz {
 	}
 
 	public void nextImage() {
-		imageNumber += 1;
+		if (imageNumber == images.size()-1){}
+		else
+			imageNumber += 1;
+	}
+	
+	public void prevImage() {
+		if (imageNumber == 0){}
+		else
+			imageNumber -= 1;
 	}
 
 	public void nextQuestion() {

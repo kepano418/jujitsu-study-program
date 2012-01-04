@@ -54,6 +54,7 @@ public class QuizImageActivity extends Activity{
 			nextQuestion();
 			break;
 		case R.id.quizAnswer3:
+			prevImage();
 			break;
 		case R.id.quizAnswer4:
 			break;
@@ -67,6 +68,11 @@ public class QuizImageActivity extends Activity{
 	
 	public void nextImage(){
 		quizer.nextImage();
+		loadImage();
+	}
+	
+	public void prevImage(){
+		quizer.prevImage();
 		loadImage();
 	}
 	

@@ -31,7 +31,7 @@ public class YudanshaStudyActivity extends Activity {
 		setContentView(R.layout.main);
 		db = new JujitsuStudyDBAdapter(this);
 		db.open();
-		// db.addData(FILE_LOC);
+		//db.addData(FILE_LOC);
 
 		setRankSelectSpinner();
 	}
@@ -39,15 +39,15 @@ public class YudanshaStudyActivity extends Activity {
 	public void onClickStartButton(View target) {
 
 		// regular
-//		Intent i = new Intent("com.kepano.jujitsustudy.QuizImageActivity");
-//		i.putExtra("rank", rankSelect.getSelectedItem().toString());
-//		if (catSelect.getSelectedItem().toString().equals("All Sections"))
-//			i.putExtra("category", "all");
-//		else
-//			i.putExtra("category", catSelect.getSelectedItem().toString());
+		Intent i = new Intent("com.kepano.jujitsustudy.QuizImageActivity");
+		i.putExtra("rank", rankSelect.getSelectedItem().toString());
+		if (catSelect.getSelectedItem().toString().equals("All Sections"))
+			i.putExtra("category", "all");
+		else
+			i.putExtra("category", catSelect.getSelectedItem().toString());
 
 		// admin needs to add images to DB
-		 Intent i = new Intent("com.kepano.jujitsustudy.AdminPanel");
+		// Intent i = new Intent("com.kepano.jujitsustudy.AdminPanel");
 
 		startActivity(i);
 	}
