@@ -1,6 +1,8 @@
 package quizHandler;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -18,6 +20,7 @@ public class Quiz {
 	private int questionNumber = 0;
 	private final String fileLoc = Environment.getExternalStorageDirectory()
 			.getAbsolutePath() + "/Jujitsu/";
+	
 	
 	public Quiz(String rank, String category, JujitsuStudyDBAdapter db) {
 		this.db = db;
@@ -41,7 +44,7 @@ public class Quiz {
 				c.moveToNext();
 			}
 		}
-
+		randomQuestions();
 	}
 
 	public void LoadImages() {
@@ -84,5 +87,48 @@ public class Quiz {
 
 	public String getText() {
 		return moves.get(questionNumber).getWhatIs();
+	}
+	
+	public String[] getAnswerSet(){
+		String[] answers = null;
+		Random randomAnswerSlot = new Random();
+		
+		if(moves.size() > 4){
+			answers = new String[4];
+			answers[0] = moves.get(questionNumber).getWhatIs();
+			for(int x = 1; x < answers.length; x++){
+				int spot = randomAnswerSlot.nextInt(moves.size());
+				while(Arrays.asList(answers).contains(moves.get(spot).getWhatIs())){
+					spot = randomAnswerSlot.nextInt(moves.size());
+				}
+				answers[x] = moves.get(spot).getWhatIs();
+			}
+		}
+		
+		for(int x = 0; x < answers.length; x++){
+			String temp = answers[x];
+			int spot = randomAnswerSlot.nextInt(answers.length);
+			answers[x] = answers[spot];
+			answers[spot] = temp;
+		}
+		return answers;
+		
+	}
+
+	public void randomQuestions(){
+		Random randomAnswerSlot = new Random();
+		for(int x = 0; x < moves.size(); x++){
+			Question temp = moves.get(x);
+			int spot = randomAnswerSlot.nextInt(moves.size());
+			moves.set(x, moves.get(spot));
+			moves.set(spot, temp);
+		}
+	}
+	
+	public boolean checkAnswer(String s){
+		if(moves.get(questionNumber).checkAnswer(s))
+			return true;
+		else
+			return false;
 	}
 }
