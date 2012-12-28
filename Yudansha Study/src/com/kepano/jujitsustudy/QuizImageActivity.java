@@ -3,11 +3,7 @@ package com.kepano.jujitsustudy;
 import quizHandler.Quiz;
 import database.handler.JujitsuStudyDBAdapter;
 import android.app.Activity;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -31,8 +27,7 @@ public class QuizImageActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.image_quiz_layout);
-		JujitsuStudyDBAdapter db;
-
+		
 		rank = getIntent().getExtras().getString("rank");
 		category = getIntent().getExtras().getString("category");
 		quizer = new Quiz(rank, category, new JujitsuStudyDBAdapter(this));

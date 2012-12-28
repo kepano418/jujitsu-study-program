@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import database.handler.ImageToDatabase;
 import database.handler.JujitsuStudyDBAdapter;
 
 public class AdminPanel extends Activity {

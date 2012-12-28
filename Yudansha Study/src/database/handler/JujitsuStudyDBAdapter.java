@@ -18,12 +18,14 @@ public class JujitsuStudyDBAdapter {
 	public static final int CATEGORY_TABLE = 1;
 	public static final int MOVES_TABLE = 2;
 	public static final int IMAGE_TABLE = 3;
+	public static final int VERSION_TABLE = 4;
 
 	public static final String[][] COLUMN_VALUES = { 
 		    { "ID", "Belt" }, // Adult Rank Table
 			{ "ID", "AreaMoveIsIn" }, // Category Table
 			{ "ID", "Moves", "Category", "ARank" }, // Moves Table
-			{ "PrimaryKey", "PicID", "PicNum", "Picture" } // Image Table
+			{ "PrimaryKey", "PicID", "PicNum", "Picture" }, // Image Table
+			{ "ID", "desc"} //version
 	};
 
 	private Context context;
@@ -187,4 +189,11 @@ public class JujitsuStudyDBAdapter {
 		else
 			return "";
 	}
+	
+	public Cursor fetchVersion() {
+		return db.query(DataHandler.QUERY_VERSION,
+				null, null,
+				null, null, null, null);
+	}
+	
 }
