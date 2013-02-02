@@ -3,9 +3,10 @@ package database.handler;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.kepano.jujitsustudy.YudanshaStudyActivity;
+
 import parser.Parser;
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -28,16 +29,11 @@ public class JujitsuStudyDBAdapter {
 			{ "ID", "desc"} //version
 	};
 
-	private Context context;
 	private SQLiteDatabase db;
 	private DataHandler dbHandler;
 
-	public JujitsuStudyDBAdapter(Context context) {
-		this.context = context;
-	}
-
 	public JujitsuStudyDBAdapter open() throws SQLException {
-		dbHandler = new DataHandler(context);
+		dbHandler = new DataHandler(YudanshaStudyActivity.getAppContext());
 		db = dbHandler.getWritableDatabase();
 		return this;
 	}

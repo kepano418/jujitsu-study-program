@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import database.handler.JujitsuStudyDBAdapter;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.Spinner;
 
 public class YudanshaStudyActivity extends Activity {
 	/** Called when the activity is first created. */
+	private static Context context;
 	final String FILE_LOC = Environment.getExternalStorageDirectory()
 			.getAbsolutePath() + "/Jujitsu/JujitsuData.xml";
 	private ArrayAdapter<CharSequence> rankAdapter;
@@ -28,10 +30,11 @@ public class YudanshaStudyActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		YudanshaStudyActivity.context = getApplicationContext();
 		setContentView(R.layout.main);
-		db = new JujitsuStudyDBAdapter(this);
+		db = new JujitsuStudyDBAdapter();
 		db.open();
-		//db.addData(FILE_LOC);
+		// db.addData(FILE_LOC);
 
 		setRankSelectSpinner();
 	}
@@ -113,6 +116,10 @@ public class YudanshaStudyActivity extends Activity {
 
 		});
 
+	}
+
+	public static Context getAppContext() {
+		return context;
 	}
 
 }

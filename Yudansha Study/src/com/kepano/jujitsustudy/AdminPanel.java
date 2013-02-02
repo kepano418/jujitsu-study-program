@@ -24,7 +24,7 @@ public class AdminPanel extends Activity {
 			.getExternalStorageDirectory().getAbsolutePath() + "/Jujitsu/";
 	protected final String[] folders = { "Gokyu", "Ikkyu", "Nikyu", "Sankyu",
 			"Yonkyu" };
-	protected JujitsuStudyDBAdapter db = new JujitsuStudyDBAdapter(this);
+	protected JujitsuStudyDBAdapter db = new JujitsuStudyDBAdapter();
 	protected String[] files;
 	protected File folder;
 	protected int folderSpot = 0, fileSpot = -1, fileCounter = 0;

@@ -30,7 +30,7 @@ public class QuizImageActivity extends Activity {
 		
 		rank = getIntent().getExtras().getString("rank");
 		category = getIntent().getExtras().getString("category");
-		quizer = new Quiz(rank, category, new JujitsuStudyDBAdapter(this));
+		quizer = new Quiz(rank, category, new JujitsuStudyDBAdapter());
 		loadObjects();
 		loadImage();
 		loadText();
